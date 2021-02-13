@@ -1,6 +1,7 @@
 import requests
 import random
 import string
+import socket
 
 def passwordGenerator(pass_len):
     password = ''
@@ -14,7 +15,7 @@ def ip_address(ipadd):
         res=requests.get('http://ipinfo.io/'+ipadd+'?token=cf6c6c0ce2d37e')
         data=res.json()
         data_returned = '''
-    Ip Address : {} 
+    Ip Address : {}
     City : {}
     Region : {}
     country : {}
@@ -27,6 +28,16 @@ def ip_address(ipadd):
     except:
         return "Check Your Internet Connection Or Enter a Valid IP"
 
+def get_host():
+    h_name = str(socket.gethostname())
+    IP_addres = str(socket.gethostbyname(h_name))
+    datas="""
+    HOST NAME:{}
+    IP Address:{}
+    """.format(h_name,IP_addres)
+
+    return datas
+
 # Sample JSON Output
 # {
 #  "ip": "139.130.4.5",
@@ -38,4 +49,3 @@ def ip_address(ipadd):
 #  "postal": "4000",
 #  "timezone": "Australia/Brisbane"
 # }
-

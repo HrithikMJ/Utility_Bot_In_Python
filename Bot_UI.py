@@ -1,16 +1,21 @@
 import tkinter as tk
 import sys, os
-
-import modules.generalfun
+from modules.generalfun import ip_address,get_host,passwordGenerator
 from modules.news import get_news
 from modules.weather import weather
-from modules.responces import welcome,jokes,help
-from modules.text_converter import main_speak 
+from modules.responces import jokes,help1
+from modules.text_converter import main_speak
+from modules.img2pdf import main_f
 import webbrowser
-import random
-
+from random import randint
 root = tk.Tk()
-generate_random = lambda x : random.randint(0,x)
+welcome={
+    "Hi":["Hi There !","Hi !","Hi How can i help you ?"],
+    "BotStart":["hi","start bot","start"],
+    "News":["get me news","read news","news","news today"],
+    "Jokes":["tell me a joke","joke","tell a joke"]
+}
+
 sys.path.append(os.path.abspath(os.path.join('..', 'config')))
 
 def copy_to_clipboard(str):
@@ -18,11 +23,11 @@ def copy_to_clipboard(str):
     root.clipboard_append(str)
     root.update()
 def Bot_Responce(User_Input):
-    
+
     # Starting The Bot
 
-    if (User_Input.lower() in "/start"):
-        BotResponce = welcome["Hi"][generate_random(len(welcome["Hi"])-1)]
+    if (User_Input.lower() == "/start") or (User_Input.lower() in welcome["BotStart"]) :
+        BotResponce = welcome["Hi"][randint(0,2)]
         text.insert(tk.END,"\n"+"Bot : "+BotResponce)
         main_speak(BotResponce)
 
@@ -30,10 +35,11 @@ def Bot_Responce(User_Input):
 
     elif (User_Input.lower() == "/clear"):
         text.delete('1.0', tk.END)
+        text.insert(tk.END,"\n"+help1+"\n")
 
     # Printing The News
 
-    elif (User_Input.lower() == "/news"):
+    elif (User_Input.lower() == "/news") or (User_Input.lower() in welcome["News"]):
         responce =get_news(5)
         if (responce == -1):
             text.insert(tk.END,"\n"+"Bot : "+"Please Check Your Internet Connection")
@@ -45,11 +51,11 @@ def Bot_Responce(User_Input):
 
     # Generate a Random Joke
 
-    elif (User_Input.lower() == "/joke"):
-        no = generate_random(len(jokes)-1)
+    elif (User_Input.lower() == "/joke") or (User_Input.lower() in welcome["Jokes"]):
+        no = randint(0,94)
         text.insert(tk.END,"\n"+"\n {} \n".format(jokes[no]))
 
-    # Make The Bot Speak Somthing 
+    # Make The Bot Speak Somthing
 
     elif( "/speak" in User_Input.lower().split(" ")):
         temp = User_Input[7:]
@@ -63,10 +69,10 @@ def Bot_Responce(User_Input):
         text.insert(tk.END,"\n"+"Bot : "+"Opened "+temp)
         text.insert(tk.END,"\n")
 
-    # Find Weather of A City 
+    # Find Weather of A City
 
     elif ( "/weather" == User_Input.lower()[0:8]):
-        temp = User_Input[9:] 
+        temp = User_Input[9:]
         responce = weather(temp)
         if (responce == -1):
             text.insert(tk.END,"\n"+"Bot : Enter A Valid City Name or Check Your Internet Connection"+"\n")
@@ -76,7 +82,7 @@ def Bot_Responce(User_Input):
             for i in responce.values():
                 text.insert(tk.END,"\n"+i)
             text.insert(tk.END,"\n")
-    
+
     # Open Google With A Search Keyword
 
     elif ( "search for" == User_Input.lower()[0:10]):
@@ -91,39 +97,46 @@ def Bot_Responce(User_Input):
                 copy_to_clipboard(str(responce))
                 break
             else:
-                continue 
+                continue
         else:
             responce = modules.generalfun.passwordGenerator(8)
             text.insert(tk.END,"\n"+"Password Saved To Clipboard - "+responce+"\n")
             copy_to_clipboard(responce)
         text.insert(tk.END,"\n"+"")
-    
+
     elif ("/ipaddress" in User_Input.lower()):
         temp = User_Input.split(' ')
         result = modules.generalfun.ip_address(temp[1])
         text.insert(tk.END,"\n"+"Bot :"+"\n")
         text.insert(tk.END,"\n"+result+"\n")
 
-    elif ("/help" in User_Input.lower()):
+    elif (User_Input.lower()== "/host"):
+        result=get_host()
         text.insert(tk.END,"\n"+"Bot :"+"\n")
-        text.insert(tk.END,"\n"+help+"\n")
-        
+        text.insert(tk.END,"\n"+result+"\n")
+
+    elif (User_Input.lower() in "/img2pdf")or(User_Input.lower() == "/img2pdf"):
+
+        main_f()
+
+
 
 def sendmessage(event):
     text.config(state='normal')
     text.insert(tk.END,"\n"+"You : "+e.get())
     text.insert(tk.END,"\n")
-    Bot_Responce(e.get())
+    Bot_Responce(str(e.get()))
     text.config(state='disabled')
 
 def func(event):
     print("You hit return.")
 
-text =tk.Text(root,bg="#FFF",width=80)
+text =tk.Text(root,bg="#FFF",width=80,bd=5)
+text.insert(tk.END,"\n"+help1+"\n")
 text.grid(row=0,column=0,columnspan=2)
-e=tk.Entry(root,width=80)
+e=tk.Entry(root,width=80,bd=5)
 root.bind('<Return>', sendmessage)
-send=tk.Button(root,text="Send",bg="#FFF",width=15,command=sendmessage).grid(row=1,column=1)
+send=tk.Button(root,text="Send",bg="#FFF",bd=3,width=15,command=sendmessage).grid(row=1,column=1)
 e.grid(row=1,column=0)
 root.title("Utility Bot")
 tk.mainloop()

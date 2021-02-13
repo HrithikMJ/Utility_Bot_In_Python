@@ -1,9 +1,3 @@
-welcome={
-    "Hi":["Hi There !","Hi !","Hi How can i help you ?"],
-    "BotStart":["hi","start bot","start"],
-    "News":["get me news","read news","news","news today"],
-    "Jokes":["tell me a joke","joke","tell a joke"]
-}
 
 jokes =[
     "Complaining about the lack of smoking shelters, the nicotine addicted Python programmers said there ought to be 'spaces for tabs'.",
@@ -103,9 +97,10 @@ jokes =[
     "I went to a street where the houses were numbered 8k, 16k, 32k, 64k, 128k, 256k and 512k. It was a trip down Memory Lane."
 ]
 
-help= ''' 
-    Utility Bot Help 
-Type Commands To Get it Working   
+help1= '''
+    Welcome to Utility Bot
+
+Type Commands To Get it Working
 
 0. /News           - Gets you the latest News
 1. /Joke           - Gets a random joke
@@ -116,5 +111,8 @@ Type Commands To Get it Working
 6. /ipaddress <ip> - gets basic information bout the ipaddress
 7. /help           - display this help
 8. /clear          - clears the screen
-9. /start          - start the bot  
+9. /start          - start the bot
+10./host           - gets info about the host
+11./img2df         - starts a simple img2pdf converter app
+12./exit           - generates an exit sequence
 '''
