@@ -5,10 +5,10 @@ from modules.news import get_news
 from modules.weather import weather
 from modules.responces import jokes,help1
 from modules.text_converter import main_speak
-from modules.img2pdf import main_f
 import webbrowser
 from random import randint
 root = tk.Tk()
+started=False
 welcome={
     "Hi":["Hi There !","Hi !","Hi How can i help you ?"],
     "BotStart":["hi","start bot","start"],
@@ -35,7 +35,7 @@ def Bot_Responce(User_Input):
 
     elif (User_Input.lower() == "/clear"):
         text.delete('1.0', tk.END)
-        text.insert(tk.END,"\n"+help1+"\n")
+
 
     # Printing The News
 
@@ -115,21 +115,23 @@ def Bot_Responce(User_Input):
         text.insert(tk.END,"\n"+"Bot :"+"\n")
         text.insert(tk.END,"\n"+result+"\n")
 
-    elif (User_Input.lower() in "/img2pdf")or(User_Input.lower() == "/img2pdf"):
+    elif (User_Input.lower()== "/help") or (User_Input.lower() == "/h"):
+        text.insert(tk.END,"\n"+help1+"\n")
 
-        main_f()
-
+    elif (User_Input.lower() == "/exit"):
+        root.destroy()
 
 
 def sendmessage(event):
+    global started
+    if not started:
+        text.delete('1.0', tk.END)
+    started=True
     text.config(state='normal')
     text.insert(tk.END,"\n"+"You : "+e.get())
     text.insert(tk.END,"\n")
     Bot_Responce(str(e.get()))
     text.config(state='disabled')
-
-def func(event):
-    print("You hit return.")
 
 text =tk.Text(root,bg="#FFF",width=80,bd=5)
 text.insert(tk.END,"\n"+help1+"\n")
@@ -140,3 +142,4 @@ send=tk.Button(root,text="Send",bg="#FFF",bd=3,width=15,command=sendmessage).gri
 e.grid(row=1,column=0)
 root.title("Utility Bot")
 tk.mainloop()
+started=True

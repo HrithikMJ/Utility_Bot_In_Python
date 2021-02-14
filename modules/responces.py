@@ -113,6 +113,5 @@ Type Commands To Get it Working
 8. /clear          - clears the screen
 9. /start          - start the bot
 10./host           - gets info about the host
-11./img2df         - starts a simple img2pdf converter app
-12./exit           - generates an exit sequence
+11./exit           - generates an exit sequence
 '''
