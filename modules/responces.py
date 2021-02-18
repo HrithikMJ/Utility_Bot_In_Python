@@ -1,4 +1,8 @@
-
+welcome=["Hi There !","Hi !","Hi How can i help you ?"]
+joke=["tell me a joke","joke","tell a joke"]
+news=["get me news","read news","news","news today"]
+bot_start=["hi","start bot","start"]
+bot_dk=["sorry i couldn't get you:(","hmmm.. this command seems new to me","hey! try a different command","beep..boop..boop here ......try again","i guess my iq is so low , lower tha joe mama","me no get you","me no Understand","me is dumb"]
 jokes =[
     "Complaining about the lack of smoking shelters, the nicotine addicted Python programmers said there ought to be 'spaces for tabs'.",
     "Ubuntu users are apt to get this joke.",
@@ -96,6 +100,17 @@ jokes =[
     "Why does Waldo only wear stripes? Because he doesn't want to be spotted.",
     "I went to a street where the houses were numbered 8k, 16k, 32k, 64k, 128k, 256k and 512k. It was a trip down Memory Lane."
 ]
+def filess(a):
+    light_sc='''1 #DEE4E7\n2 #3700B3\n3 #37474F\n4 #07baa8\n5 #FFFFFF'''
+    dark_sc='''1 #1F1B24\n2 #DEE4E7\n3 #DEE4E7\n4 #03DAC5\n5 #000000'''
+    #bg,user,bot,body,main
+    f=open("colorscheme.txt","w")
+    if a==1:
+        f.write(dark_sc)
+    else:
+        f.write(light_sc)
+    f.close()
+
 
 help1= '''
     Welcome to Utility Bot
@@ -114,4 +129,5 @@ Type Commands To Get it Working
 9. /start          - start the bot
 10./host           - gets info about the host
 11./exit           - generates an exit sequence
+12./light and /dark- toogles between light theme and dark theme respectively
 '''

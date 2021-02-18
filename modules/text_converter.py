@@ -22,5 +22,4 @@ def main_speak(text):
         play_saved_speech(file)
         os.remove(file)
     except:
-        print("\n Some error Occured . Please Check Your Internet Connection : ( \n")
-
+        print("\n Some error Occured . \n")
