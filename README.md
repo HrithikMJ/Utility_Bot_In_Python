@@ -48,7 +48,7 @@ Run Bot_UI.py
 * GTTS
 * PlaySound
 
-##Orginal Authors
+## Orginal Authors
 
 * **Belgin Android** - *Backend* - [Belgin Android](https://github.com/Belgin-Android)
 * **Karthikeyan** - *Frontend* - [Karthikeyan](https://github.com/karthikeyan-17)
