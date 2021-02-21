@@ -2,7 +2,8 @@ welcome=["Hi There !","Hi !","Hi How can i help you ?"]
 joke=["tell me a joke","joke","tell a joke"]
 news=["get me news","read news","news","news today"]
 bot_start=["hi","start bot","start"]
-bot_dk=["sorry i couldn't get you:(","hmmm.. this command seems new to me","hey! try a different command","beep..boop..boop here ......try again","i guess my iq is so low , lower tha joe mama","me no get you","me no Understand","me is dumb"]
+bot_dk=["sorry i couldn't get you:(","hmmm.. this command seems new to me","hey! try a different command","beep..boop..boop here ......try again","i guess my iq is so low , lower than joe mama","me no get you","me no Understand","me is dumb"]
+bot_go=["exit","bye","adios","byeeeeeee","ciao",""]
 jokes =[
     "Complaining about the lack of smoking shelters, the nicotine addicted Python programmers said there ought to be 'spaces for tabs'.",
     "Ubuntu users are apt to get this joke.",

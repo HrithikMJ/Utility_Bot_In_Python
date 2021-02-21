@@ -4,7 +4,7 @@ import sys, os
 from modules.generalfun import ip_address,get_host,passwordGenerator
 from modules.news import get_news
 from modules.weather import weather
-from modules.responces import jokes,help1,filess,welcome,joke,news,bot_start,bot_dk
+from modules.responces import jokes,help1,filess,welcome,joke,news,bot_start,bot_dk,bot_go
 from modules.text_converter import main_speak
 import webbrowser
 from random import randint
@@ -64,7 +64,7 @@ def Bot_Responce(User_Input):
         if not started:
             text.delete('1.0', tk.END)
             started=True
-        no = randint(0,95)
+        no = randint(0,94)
         text.insert(tk.END,"\n"+"\n {} \n".format(jokes[no]))
         e.delete(0,"end")
 
@@ -165,8 +165,8 @@ def Bot_Responce(User_Input):
         text.insert(tk.END,"\n"+help1+"\n")
         e.delete(0,"end")
 
-    elif (User_Input.lower() == "/exit"):
-        root.destroy()
+    elif (User_Input.lower() == "/exit") or (User_Input.lower() in bot_go):
+        root.after(2,root.destroy)
 
     elif (User_Input.lower() in "/dark"):
         if not started:
@@ -186,6 +186,7 @@ def Bot_Responce(User_Input):
         if a=='yes':
             os.execl(sys.executable, sys.executable, *sys.argv)
         e.delete(0,"end")
+
     else:
         if not started:
             text.delete('1.0', tk.END)
