@@ -191,7 +191,7 @@ def Bot_Responce(User_Input):
             text.delete('1.0', tk.END)
             started=True
         text.insert(tk.END,"\n"+"Bot :"+"\n")
-        er=bot_dk[randint(0,9)]
+        er=bot_dk[randint(0,8)]
         text.insert(tk.END,"\n"+er+"\n")
         text.insert(tk.END,"\n"+"InVaLiD InPuT!!!"+"\n")
         text.insert(tk.END,"\n"+"Try agiain:((((("+"\n")
